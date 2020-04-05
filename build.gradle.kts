@@ -1,7 +1,8 @@
 plugins {
     java
     application
-    id("org.openjfx.javafxplugin") version("0.0.8")
+    id("org.openjfx.javafxplugin") version ("0.0.8")
+    id("org.beryx.jlink") version ("2.12.0")
 }
 
 repositories {
@@ -9,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    val junitVersion = "5.6.0"
+    val junitVersion = "5.4.2"
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
@@ -20,10 +21,17 @@ application {
     mainClassName = "com.mooney.minesweeper.Main"
 }
 
-
 javafx {
     version = "14"
     modules = listOf("javafx.controls")
+}
+
+jlink {
+    options.addAll(listOf("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages"))
+    launcher {
+        name = "minesweeper"
+        jvmArgs.add("--enable-preview")
+    }
 }
 
 tasks {
