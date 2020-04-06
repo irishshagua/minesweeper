@@ -2,7 +2,6 @@ name: Publish Tagged Releases
 
 on:
   push:
-    branches: [ master ]
     tags:
       - 'v*'
 
