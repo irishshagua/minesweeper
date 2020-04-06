@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <MenuBar>
+            <Menu fx:id="mMain" text="Main">
+                <MenuItem text="Exit"></MenuItem>
+            </Menu>
+
+            <Menu fx:id="mAbout" text="About">
+                <MenuItem text="Build Info"></MenuItem>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <Label text="Welcome to Minesweeper"/>
+    </center>
+</BorderPane>

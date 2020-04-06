@@ -23,7 +23,10 @@ application {
 
 javafx {
     version = "14"
-    modules = listOf("javafx.controls")
+    modules = listOf(
+            "javafx.controls",
+            "javafx.fxml"
+    )
 }
 
 jlink {
