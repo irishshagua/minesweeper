@@ -1,6 +1,7 @@
 # Minesweeper
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Firishshagua%2Fminesweeper%2Fbadge%3Fref%3Dmaster&style=popout)](https://actions-badge.atrox.dev/irishshagua/minesweeper/goto?ref=master)
+![Publish Tagged Releases](https://github.com/irishshagua/minesweeper/workflows/Publish%20Tagged%20Releases/badge.svg)
 
 ## Purpose
 Sample project to play with Java and JavaFX using the latest and greatest features (at time of writing that's Java 14).
@@ -17,4 +18,5 @@ To create a release you need to push a new `version` tag to the master branch. A
 
 ```bash
 git tag -a v0.1 -m "Initial tagged release"
+git push --tags
 ```
