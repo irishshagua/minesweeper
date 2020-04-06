@@ -34,10 +34,19 @@ jlink {
     }
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_14
+    targetCompatibility = JavaVersion.VERSION_14
+}
+
 tasks {
     test {
         useJUnitPlatform()
         jvmArgs("--enable-preview")
+        testLogging {
+            outputs.upToDateWhen { false }
+            showStandardStreams = true
+        }
     }
 
     withType<JavaCompile> {
