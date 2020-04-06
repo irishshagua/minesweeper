@@ -1,4 +1,4 @@
-name: Build, Test and Publish
+name: Build and Test
 
 on:
   push:
@@ -19,26 +19,4 @@ jobs:
     - name: Gradle Build
       run: |
         chmod +x gradlew
-        ./gradlew clean test jlink
-        cd build
-        zip -r minesweeper image/
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/minesweeper.zip
-        asset_name: minesweeper.zip
-        asset_content_type: application/zip
+        ./gradlew clean test
