@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml">
+<?import javafx.scene.layout.GridPane?>
+<BorderPane prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mooney.minesweeper.ui.MainController">
     <top>
         <MenuBar>
-            <Menu fx:id="mMain" text="Main">
-                <MenuItem text="Exit"></MenuItem>
-            </Menu>
-
-            <Menu fx:id="mAbout" text="About">
-                <MenuItem text="Build Info"></MenuItem>
+            <Menu text="Game">
+                <MenuItem text="New Game" onAction="#createNewGame"></MenuItem>
             </Menu>
         </MenuBar>
     </top>
     <center>
-        <Label text="Welcome to Minesweeper"/>
+        <GridPane fx:id="gameTiles" visible="false"></GridPane>
     </center>
 </BorderPane>
