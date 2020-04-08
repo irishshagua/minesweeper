@@ -9,6 +9,7 @@ Sample project to play with Java and JavaFX using the latest and greatest featur
 Goals of the project are:    
  - [x] Run Java FX with Java 14 preview features
  - [x] Have a build running in Github which produces a downloaded game
+   * [] Have builds for every platform 
  - [x] Make the releases conditional
  - [] Create a Playable Minesweeper
  - [] Have some autoplay logic which can solve the Minesweeper game
@@ -20,3 +21,6 @@ To create a release you need to push a new `version` tag to the master branch. A
 git tag -a v0.1 -m "Initial tagged release"
 git push --tags
 ```
+
+## Assets
+Images used in the app are from [pixabay](https://pixabay.com/). They're all marked as free for use without licence.

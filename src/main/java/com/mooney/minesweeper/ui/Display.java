@@ -10,7 +10,7 @@ public class Display {
 
     private FXMLLoader loader = new FXMLLoader();
 
-    private static final String MAIN_FRAME_FXML = "mainFrame.fxml";
+    private static final String MAIN_FRAME_FXML = "assets/fxml/mainFrame.fxml";
 
     public Scene mainDisplay() {
         var root = (BorderPane) getFxmlResource(MAIN_FRAME_FXML);
@@ -22,7 +22,7 @@ public class Display {
             var fxml = this.getClass().getClassLoader().getResource(MAIN_FRAME_FXML);
             return loader.load(fxml);
         } catch (IOException e) {
-            throw new RuntimeException("", e);
+            throw new RuntimeException("Failed loading FXML resource", e);
         }
     }
 }

@@ -1,9 +1,10 @@
-package com.mooney.minesweeper.ui;
+package com.mooney.minesweeper.ui.controllers;
 
 import com.mooney.minesweeper.game.Game;
 import com.mooney.minesweeper.models.Cell;
 import com.mooney.minesweeper.models.DifficultyLevel;
 import com.mooney.minesweeper.models.GameState;
+import com.mooney.minesweeper.ui.MineCell;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import org.slf4j.Logger;
@@ -20,9 +21,7 @@ public class MainController {
 
     public void createNewGame() {
         gameState = Game.generateGame(DifficultyLevel.SIMPLE);
-
         buildGameTiles(gameState.cells());
-
         logger.debug("New game created: {}", gameState);
     }
 
