@@ -1,7 +1,7 @@
 # Minesweeper
 
-![Build and Test](https://github.com/irishshagua/minesweeper/workflows/Build%20and%20Test/badge.svg)
-![Publish Tagged Releases](https://github.com/irishshagua/minesweeper/workflows/Publish%20Tagged%20Releases/badge.svg)
+[![Build and Test](https://github.com/irishshagua/minesweeper/workflows/Build%20and%20Test/badge.svg)](https://github.com/irishshagua/minesweeper/actions?query=workflow%3A%22Build+and+Test%22)
+[![Publish Tagged Releases](https://github.com/irishshagua/minesweeper/workflows/Publish%20Tagged%20Releases/badge.svg)](https://github.com/irishshagua/minesweeper/releases)
 
 ## Purpose
 Sample project to play with Java and JavaFX using the latest and greatest features (at time of writing that's Java 14).
