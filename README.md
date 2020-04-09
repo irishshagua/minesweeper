@@ -1,6 +1,6 @@
 # Minesweeper
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Firishshagua%2Fminesweeper%2Fbadge%3Fref%3Dmaster&style=popout)](https://actions-badge.atrox.dev/irishshagua/minesweeper/goto?ref=master)
+![Build and Test](https://github.com/irishshagua/minesweeper/workflows/Build%20and%20Test/badge.svg)
 ![Publish Tagged Releases](https://github.com/irishshagua/minesweeper/workflows/Publish%20Tagged%20Releases/badge.svg)
 
 ## Purpose
