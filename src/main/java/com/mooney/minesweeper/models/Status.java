@@ -4,5 +4,5 @@ public enum Status {
 
     IN_PLAY,
     VICTORY,
-    DEFEAT;
+    DEFEAT
 }

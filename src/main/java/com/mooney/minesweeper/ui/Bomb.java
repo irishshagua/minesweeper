@@ -8,10 +8,10 @@ import java.util.Objects;
 
 public class Bomb extends ImageView {
 
-    private static InputStream BOMG_IMAGE_RESOURCE = Objects.requireNonNull(
+    private static final InputStream BOMB_IMAGE_RESOURCE = Objects.requireNonNull(
             Bomb.class.getClassLoader().getResourceAsStream("assets/images/bomb.png")
     );
-    private static Image BOMB_IMAGE = new Image(BOMG_IMAGE_RESOURCE);
+    private static final Image BOMB_IMAGE = new Image(BOMB_IMAGE_RESOURCE);
 
     public Bomb() {
         super(BOMB_IMAGE);

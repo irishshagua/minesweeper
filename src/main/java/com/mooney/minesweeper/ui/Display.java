@@ -8,9 +8,8 @@ import java.io.IOException;
 
 public class Display {
 
-    private FXMLLoader loader = new FXMLLoader();
-
     private static final String MAIN_FRAME_FXML = "assets/fxml/mainFrame.fxml";
+    private final FXMLLoader loader = new FXMLLoader();
 
     public Scene mainDisplay() {
         var root = (BorderPane) getFxmlResource(MAIN_FRAME_FXML);
@@ -20,7 +19,7 @@ public class Display {
     private Object getFxmlResource(String fxmlName) {
         try {
             var fxml = this.getClass().getClassLoader().getResource(MAIN_FRAME_FXML);
-            return loader.load(fxml);
+            return FXMLLoader.load(fxml);
         } catch (IOException e) {
             throw new RuntimeException("Failed loading FXML resource", e);
         }

@@ -6,9 +6,9 @@ public enum DifficultyLevel {
     MODERATE(16, 16, 40),
     DIFFICULT(30, 16, 99);
 
-    private int numRows;
-    private int numCols;
-    private int numMines;
+    private final int numRows;
+    private final int numCols;
+    private final int numMines;
 
     DifficultyLevel(int rows, int cols, int mines) {
         this.numRows = rows;

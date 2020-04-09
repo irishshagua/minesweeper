@@ -14,6 +14,34 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class GameTest {
 
     @Test
+    void adjacentCellValidation() {
+        var gameState = Game.generateGame(DifficultyLevel.SIMPLE);
+
+        // Test adjacent cells off the board arent counted
+        var topLeftCorner = gameState.cells()[0][0];
+        var adjacentCells = Game.adjacentCells(topLeftCorner);
+
+        assertEquals(3, adjacentCells.size());
+        assertTrue(adjacentCells.contains(gameState.cells()[0][1]));
+        assertTrue(adjacentCells.contains(gameState.cells()[1][0]));
+        assertTrue(adjacentCells.contains(gameState.cells()[1][1]));
+
+        // Normal cell position validation
+        var normalCell = gameState.cells()[1][1];
+        adjacentCells = Game.adjacentCells(normalCell);
+
+        assertEquals(8, adjacentCells.size());
+        assertTrue(adjacentCells.contains(gameState.cells()[0][0]));
+        assertTrue(adjacentCells.contains(gameState.cells()[0][1]));
+        assertTrue(adjacentCells.contains(gameState.cells()[0][2]));
+        assertTrue(adjacentCells.contains(gameState.cells()[1][0]));
+        assertTrue(adjacentCells.contains(gameState.cells()[1][2]));
+        assertTrue(adjacentCells.contains(gameState.cells()[2][0]));
+        assertTrue(adjacentCells.contains(gameState.cells()[2][1]));
+        assertTrue(adjacentCells.contains(gameState.cells()[2][2]));
+    }
+
+    @Test
     void validateSimpleGame() {
         var gameState = Game.generateGame(DifficultyLevel.SIMPLE);
 
