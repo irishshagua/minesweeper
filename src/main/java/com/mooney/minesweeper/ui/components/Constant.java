@@ -1,4 +1,4 @@
-package com.mooney.minesweeper.ui;
+package com.mooney.minesweeper.ui.components;
 
 public class Constant {
 

@@ -9,7 +9,6 @@ import java.io.IOException;
 public class Display {
 
     private static final String MAIN_FRAME_FXML = "assets/fxml/mainFrame.fxml";
-    private final FXMLLoader loader = new FXMLLoader();
 
     public Scene mainDisplay() {
         var root = (BorderPane) getFxmlResource(MAIN_FRAME_FXML);

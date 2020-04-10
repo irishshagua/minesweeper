@@ -1,4 +1,4 @@
-package com.mooney.minesweeper.ui;
+package com.mooney.minesweeper.ui.components;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,8 +16,8 @@ public class Bomb extends ImageView {
     public Bomb() {
         super(BOMB_IMAGE);
 
-        setFitWidth(Constant.CELL_SIDE_LENGTH);
-        setFitHeight(Constant.CELL_SIDE_LENGTH);
+        setFitWidth(Constant.CELL_SIDE_LENGTH - 5);
+        setFitHeight(Constant.CELL_SIDE_LENGTH - 5);
         setPreserveRatio(true);
     }
 }

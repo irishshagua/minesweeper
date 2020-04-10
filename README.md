@@ -14,6 +14,10 @@ Goals of the project are:
  - [] Create a Playable Minesweeper
  - [] Have some autoplay logic which can solve the Minesweeper game
 
+## Game
+The UI is still very rough and a WIP. Game logic hasn't been completed either. However, the game currently looks like the below running using JavaFX:    
+![UI Sample](images/ui.png)
+
 ## Release
 To create a release you need to push a new `version` tag to the master branch. A version tag is recognised as anything which start with `v`. We will use `v0.1` as the format. Creating the tag is done as per below:
 
