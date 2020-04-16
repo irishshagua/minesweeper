@@ -81,7 +81,6 @@ class GameTest {
         var cell = gameState.cells()[4][2];
         var cascadeCells = Game.findCascadeCells(cell);
 
-        System.out.println(cascadeCells);
         assertEquals(19, cascadeCells.size());
     }
 
