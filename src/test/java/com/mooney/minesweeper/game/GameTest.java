@@ -7,6 +7,7 @@ import com.mooney.minesweeper.models.Status;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -71,6 +72,17 @@ class GameTest {
 
         assertEquals(Status.IN_PLAY, gameState.status());
         assertTrue(gameState.startTime().isBefore(LocalDateTime.now()));
+    }
+
+    @Test
+    void validateCascadeCellsFinder() {
+        var gameState = Game.generateGame(5, 5, Set.of(0, 4, 5, 9, 10, 14));
+
+        var cell = gameState.cells()[4][2];
+        var cascadeCells = Game.findCascadeCells(cell);
+
+        System.out.println(cascadeCells);
+        assertEquals(19, cascadeCells.size());
     }
 
     private int countMines(GameState gameState) {

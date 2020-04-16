@@ -10,6 +10,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.util.Set;
+import java.util.function.Function;
+
 public class MineCell extends Label {
 
     private static final Border NORMAL = new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, null, new BorderWidths(1)));
@@ -18,10 +21,11 @@ public class MineCell extends Label {
     private static final Border REVEALED = new Border(new BorderStroke(Color.LIGHTBLUE, BorderStrokeStyle.SOLID, null, new BorderWidths(1)));
 
     private final Cell cell;
-    private final Boolean isRevealed = false;
     private Boolean isMarked = false;
+    // TODO: Figure out how to use void as the return type here
+    private Function<Set<Cell>, Boolean> cascadeCallback;
 
-    public MineCell(Cell cell) {
+    public MineCell(Cell cell, Function<Set<Cell>, Boolean> callback) {
         this.cell = cell;
 
         setMinWidth(Constant.CELL_SIDE_LENGTH);
@@ -30,25 +34,40 @@ public class MineCell extends Label {
         setAlignment(Pos.CENTER);
 
         this.setOnMouseClicked(this::handleClick);
+        this.cascadeCallback = callback;
     }
 
     private void handleClick(MouseEvent event) {
         if (event.getButton() == MouseButton.PRIMARY) {
-            if (cell.isBomb()) {
-                // TODO: Add event to say bomb clicked
-                setGraphic(new Bomb());
-                setBorder(BOMBED);
+            performReveal(true);
+        } else
+            performMark();
+    }
 
+    public void markRevealed() {
+        setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        setBorder(REVEALED);
+    }
+
+    public void performReveal(Boolean withCascade) {
+        if (cell.isBomb()) {
+            // TODO: Add event to say bomb clicked
+            setGraphic(new Bomb());
+            setBorder(BOMBED);
+        } else {
+            var numAdjacentBombs = Game.calculateNumAdjacentBombs(cell);
+            if (numAdjacentBombs == 0) {
+                if (withCascade)
+                    cascadeCallback.apply(Game.findCascadeCells(cell));
+                markRevealed();
             } else {
-                var numAdjacentBombs = Game.calculateNumAdjacentBombs(cell);
-                if (numAdjacentBombs == 0) {
-                    // TODO: Do Cascade logic
-                    markRevealed();
-                } else {
-                    setText(String.valueOf(numAdjacentBombs));
-                }
+                setText(String.valueOf(numAdjacentBombs));
             }
-        } else if (!isMarked) {
+        }
+    }
+
+    public void performMark() {
+        if (!isMarked) {
             isMarked = true;
             setGraphic(new Marker());
             setBorder(MARKED);
@@ -57,10 +76,5 @@ public class MineCell extends Label {
             setGraphic(null);
             setBorder(NORMAL);
         }
-    }
-
-    private void markRevealed() {
-        setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-        setBorder(REVEALED);
     }
 }

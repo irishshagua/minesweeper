@@ -21,8 +21,12 @@ public class Game {
     }
 
     public static GameState generateGame(int numRows, int numCols, int numMines) {
+        return generateGame(numRows, numCols, generateRandomMinePlacement(numRows, numCols, numMines));
+    }
+
+    public static GameState generateGame(int numRows, int numCols, Set<Integer> minePositions) {
         Cell[][] cells = new Cell[numRows][numCols];
-        var minePositions = generateRandomMinePlacement(numRows, numCols, numMines);
+
         for (int r = 0; r < numRows; r++) {
             for (int c = 0; c < numCols; c++) {
                 cells[r][c] = new Cell(minePositions.contains(convertCellPositionToCellNum(r, c, numCols)), r, c);
@@ -40,6 +44,24 @@ public class Game {
         } else {
             return (int) adjacentCells(cell).stream().filter(Cell::isBomb).count();
         }
+    }
+
+    public static Set<Cell> findCascadeCells(Cell cell) {
+        var checkedCells = new HashSet<Cell>();
+        checkedCells.add(cell);
+        var cells = new ArrayDeque<>(adjacentCells(cell));
+
+        while (cells.size() > 0) {
+            var itrCell = cells.remove();
+            checkedCells.add(itrCell);
+            if (!itrCell.isBomb() && calculateNumAdjacentBombs(itrCell) == 0) {
+                var expandedCells = adjacentCells(itrCell);
+                expandedCells.removeAll(checkedCells);
+                expandedCells.forEach(cells::push);
+            }
+        }
+
+        return checkedCells;
     }
 
     public static List<Cell> adjacentCells(Cell cell) {
